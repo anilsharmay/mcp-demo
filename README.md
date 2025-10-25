@@ -1,93 +1,154 @@
-<p align = "center" draggable=”false” ><img src="https://github.com/AI-Maker-Space/LLM-Dev-101/assets/37101144/d1343317-fa2f-41e1-8af1-1dbb18399719" 
-     width="200px"
-     height="auto"/>
+# MCP Demo: Country Explorer with LangGraph
+
+<p align="center">
+  <img src="https://github.com/AI-Maker-Space/LLM-Dev-101/assets/37101144/d1343317-fa2f-41e1-8af1-1dbb18399719" 
+       width="200px" height="auto"/>
 </p>
 
-## <h1 align="center" id="heading">AI Makerspace: MCP Session Repo for Session 13</h1>
+## 🌍 Country Explorer: MCP + LangGraph Integration
 
-This project is a demonstration of the MCP (Model Context Protocol) server, which utilizes the Tavily API for web search capabilities. The server is designed to run in a standard input/output (stdio) transport mode.
+This project demonstrates a complete **MCP (Model Context Protocol) server** integrated with **LangGraph** to create beautiful country profiles with embedded images.
 
-## Project Overview
+## ✨ Features
 
-The MCP server is set up to handle web search queries using the Tavily API. It is built with the following key components:
+- 🔍 **MCP Server** with Unsplash Search API integration
+- 🤖 **LangGraph Agent** for intelligent country exploration  
+- 🖼️ **10 Images per Country** with photographer credits
+- 📄 **Beautiful Markdown Profiles** with embedded images
+- 🧪 **Comprehensive Test Suite** for validation
+- 📁 **Organized Project Structure** with `profiles/` and `tests/` folders
 
-- **TavilyClient**: A client for interacting with the Tavily API to perform web searches.
+## 🏗️ Project Structure
 
-## Prerequisites
-
-- Python 3.13 or higher
-- A valid Tavily API key
-
-## ⚠️NOTE FOR WINDOWS:⚠️
-
-You'll need to install this on the *Windows* side of your OS. 
-
-This will require getting two CLI tool for Powershell, which you can do as follows:
-
-- `winget install astral-sh.uv`
-- `winget install --id Git.Git -e --source winget`
-
-After you have those CLI tools, please open Cursor *into Windows*.
-
-Then, you can clone the repository using the following command in your Cursor terminal:
-
-```bash
-git clone https://AI-Maker-Space/AIE8-MCP-Session.git
+```
+mcp-demo/
+├── country_explorer.py          # Main LangGraph app (10 images)
+├── server.py                   # MCP server with Unsplash API
+├── profiles/                   # 📁 Generated country profiles
+│   ├── india_profile.md
+│   ├── japan_profile.md
+│   ├── uganda_profile.md
+│   └── usa_profile.md
+├── tests/                      # 📁 Test files
+│   ├── test_country_explorer.py
+│   ├── test_unsplash.py
+│   └── search_5_mountains.py
+└── .env                        # API keys
 ```
 
-After that, you can follow from Step 2. below!
+## 🚀 Quick Start
 
-## Installation
+### Prerequisites
+- Python 3.13+
+- Unsplash API key
+- OpenAI API key
+
+### Installation
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone https://github.com/anilsharmay/mcp-demo.git
+   cd mcp-demo
    ```
 
-2. **Configure environment variables**:
-Copy the `.env.sample` to `.env` and add your Tavily API key:
+2. **Install dependencies**:
+   ```bash
+   uv sync
    ```
-   TAVILY_API_KEY=your_api_key_here
+
+3. **Configure environment variables**:
+   Create `.env` file with your API keys:
+   ```bash
+   UNSPLASH_API_KEY=your_unsplash_api_key_here
+   OPENAI_API_KEY=your_openai_api_key_here
+   TAVILY_API_KEY=your_tavily_api_key_here
    ```
 
-3. 🏗️ **Add a new tool to your MCP Server** 🏗️
+### Running the Country Explorer
 
-Create a new tool in the `server.py` file, that's it!
+1. **Start the MCP server**:
+   ```bash
+   uv run mcp dev server.py
+   ```
 
-## Running the MCP Server
+2. **Run the Country Explorer**:
+   ```bash
+   uv run python country_explorer.py
+   ```
 
-To start the MCP server, you will need to add the following to your MCP Profile in Cursor:
+3. **Run tests**:
+   ```bash
+   cd tests && uv run python test_country_explorer.py
+   ```
 
-> NOTE: To get to your MCP config. you can use the Command Pallete (CMD/CTRL+SHIFT+P) and select "View: Open MCP Settings" and replace the contents with the JSON blob below.
+## 🎯 MCP Server Tools
 
+The MCP server provides these tools:
+
+- **`unsplash_search`**: Search for beautiful images with orientation filters
+- **`web_search`**: Search the web for country information  
+- **`roll_dice`**: Roll dice with custom notation
+
+## 🤖 LangGraph Agent
+
+The Country Explorer agent:
+- Researches countries using web search
+- Finds 10 beautiful images via Unsplash
+- Creates rich markdown profiles with embedded images
+- Includes photographer credits and links
+
+## 📸 Sample Output
+
+Each country profile includes:
+- **Cultural information** and history
+- **Geographic details** and landmarks  
+- **10 high-quality images** with credits
+- **Clean markdown formatting** for easy viewing
+
+## 🧪 Testing
+
+Run the comprehensive test suite:
+```bash
+# Test MCP server
+uv run python tests/test_unsplash.py
+
+# Test Country Explorer
+cd tests && uv run python test_country_explorer.py
+
+# Test mountain search
+uv run python tests/search_5_mountains.py
 ```
+
+## 🔧 MCP Configuration
+
+Add to your Cursor MCP settings:
+```json
 {
-    "mcpServers":  {
-        "mcp-server": {
-            "command" : "uv",
-            "args" : ["--directory", "/PATH/TO/REPOSITORY", "run", "server.py"]
-        }
+  "mcpServers": {
+    "unsplash-mcp-server": {
+      "command": "uv",
+      "args": ["--directory", ".", "run", "server.py"]
     }
+  }
 }
 ```
 
-The server will start and listen for commands via standard input/output.
+## 📚 Technologies Used
 
-## Usage
+- **MCP (Model Context Protocol)** - Server framework
+- **LangGraph** - Agent orchestration
+- **LangChain MCP Adapters** - Tool integration
+- **Unsplash API** - Image search
+- **OpenAI GPT-4** - Language model
+- **Python 3.13** - Runtime environment
 
-The server provides a `web_search` tool that can be used to search the web for information about a given query. This is achieved by calling the `web_search` function with the desired query string.
+## 🎉 Showcase
 
-## Activities: 
+This project demonstrates:
+- ✅ **MCP Server Development** with custom API integration
+- ✅ **LangGraph Agent Creation** with tool orchestration  
+- ✅ **Beautiful Output Generation** with embedded images
+- ✅ **Clean Project Organization** and testing
+- ✅ **Real-world Application** of AI agent frameworks
 
-There are a few activities for this assignment!
-
-### 🏗️ Activity #1: 
-
-Choose an API that you enjoy using - and build an MCP server for it!
-
-### 🏗️ Activity #2: 
-
-Build a simple LangGraph application that interacts with your MCP Server.
-
-You can find details [here](https://github.com/langchain-ai/langchain-mcp-adapters)!
+**Perfect for showcasing MCP + LangGraph integration!** 🌍✨
