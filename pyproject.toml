@@ -10,5 +10,8 @@ dependencies = [
     "numpy>=2.2.4",
     "openai>=1.72.0",
     "python-dotenv>=1.1.0",
+    "requests>=2.31.0",
     "tavily-python>=0.5.4",
+    "langchain-mcp-adapters>=0.1.11",
+    "langchain-openai>=0.2.0",
 ]
