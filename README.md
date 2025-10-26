@@ -105,6 +105,20 @@ Each country profile includes:
 - **10 high-quality images** with credits
 - **Clean markdown formatting** for easy viewing
 
+### 🎬 Demo GIFs
+
+**India Profile:**
+
+![India Profile Demo](profiles/India.gif)
+
+**Switzerland Profile:**
+
+![Switzerland Profile Demo](profiles/Switzerland.gif)
+
+**USA Profile:**
+
+![USA Profile Demo](profiles/USA.gif)
+
 ## 🧪 Testing
 
 Run the comprehensive test suite:
