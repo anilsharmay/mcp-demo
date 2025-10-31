@@ -5,6 +5,10 @@
        width="200px" height="auto"/>
 </p>
 
+<a href="https://glama.ai/mcp/servers/@anilsharmay/mcp-demo">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@anilsharmay/mcp-demo/badge" alt="Country Explorer Server MCP server" />
+</a>
+
 ## 🌍 Country Explorer: MCP + LangGraph Integration
 
 This project demonstrates a complete **MCP (Model Context Protocol) server** integrated with **LangGraph** to create beautiful country profiles with embedded images.
